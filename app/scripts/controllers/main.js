@@ -19,7 +19,7 @@ angular.module('bookmycabFrontendApp')
         console.log("websocket connected");
     };
     ws.onmessage = function(e) {
-        $scope.requests.append(e.data);
+        $scope.requests.push(e.data);
         console.log("Received: " + e.data);
     };
     ws.onerror = function(e) {
