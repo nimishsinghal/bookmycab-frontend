@@ -26,7 +26,7 @@ angular.module('bookmycabFrontendApp')
     '$resource', 'api_url',
     function ($resource, api_url) {
     return $resource(
-      [api_url, 'schedule_cab/'].join(''),
+      ['http://' + api_url, '/schedule_cab/'].join(''),
       {},
       {
         query: {
