@@ -13,11 +13,13 @@ angular.module('bookmycabFrontendApp')
     function ($scope, GetProducts, ScheduleCab, toastr, api_url) {
     var latitude, longitude;
     $scope.products = [];
+    $scope.requests = [];
     var ws = new WebSocket('ws://' + api_url +'/ws/alerts?subscribe-broadcast&publish-broadcast&echo');
     ws.onopen = function() {
         console.log("websocket connected");
     };
     ws.onmessage = function(e) {
+        $scope.requests.append(e.data);
         console.log("Received: " + e.data);
     };
     ws.onerror = function(e) {
