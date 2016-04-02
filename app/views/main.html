@@ -1,0 +1,31 @@
+<b class="text-center"><h3>It's time to book an Uber</h3></b>
+  <form class="schedule-cab" ng-submit="scheduleCab(schedule, source, destination, time)">
+  <div class="form-group">
+    <label for="source">Source:</label>
+    <input ng-model="source" googleplaces class="form-control"  placeholder="Select Source" ng-change="fetchProducts(source)" required/>
+  </div>
+  <div class="form-group">
+    <label for="destination">Destination</label>
+    <input ng-model="destination" googleplaces class="form-control"  placeholder="Select Destination" required/>
+  </div>
+  <div class="form-group">
+    <label for="time">Time</label>
+    <uib-timepicker ng-model="time"  hour-step="1" minute-step="10" show-meridian="ismeridian" required></uib-timepicker>
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input ng-model="schedule.email" class="form-control" placeholder="Enter Email" type="email" required/>
+  </div>
+  <label for="products">Products</label>
+  <div ng-show="products.length == 0">Please select source</div>
+  <div class="uber-products">
+    <div ng-repeat="product in products">
+      <div>
+        <input type="radio" name="product_id" ng-model="schedule.product_id"  value="{{product.product_id}}" required/>
+        <img src="{{product.image}}" class="product-image"/>
+        <br><b>Product</b> {{product.display_name}} - <i>capacity {{product.capacity}}</i>
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-default">Remind Me</button>
+</form>
